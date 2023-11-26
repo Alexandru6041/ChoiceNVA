@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-1_(koz!w#634r@h6&z@e*+&bx9%@@z!0bvr1j9d@x+#&4^e^0d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.100.7']
-
+ALLOWED_HOSTS = ['192.168.100.7', '172.20.10.2', '172.20.10.15', '127.0.0.1']
 
 # Application definition
 
@@ -126,3 +125,6 @@ STATICFILES_DIRS = [join(BASE_DIR, 'main/static')]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+URL_CAPTCHA_VERIFY = 'https://www.google.com/recaptcha/api/siteverify'
+SECRET_KEY_CAPTCHA = '6LfHqRspAAAAABXBrQFOza_dS-fXLCfJ5sfePG1r'

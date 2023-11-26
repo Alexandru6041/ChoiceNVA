@@ -1,0 +1,10 @@
+Frameworks:
+    Python, NodeJS, npm
+Node:
+    express
+    http
+    cors
+    ...
+Python:
+    django
+    ...

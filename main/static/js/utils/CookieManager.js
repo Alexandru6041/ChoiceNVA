@@ -1,12 +1,12 @@
 ///Cookie Control Class(Offering implementation for setting, getting and deleting a cookie inside your web app)
 export default class CookieController
 {
-	constructor(name)
-	{
-		this.name = name;
-	}
+	// constructor(name)
+	// {
+	// 	this.name = name;
+	// }
 
-	setCookie(value,days) 
+	setCookie(name, value,days) 
 	{
 			var expires = "";
 			if(days) 
@@ -15,13 +15,15 @@ export default class CookieController
 				date.setTime(date.getTime() + (days*24*60*60*1000));
 				expires = "; expires=" + date.toUTCString();
 			}
+			
+			const encodedValue = encodeURIComponent(value);
 
-			document.cookie = this.name + "=" + (value || "")  + expires + "; path=/";
+			document.cookie = name + "=" + (encodedValue || "")  + expires + "; path=/";
 	}
 
-	getCookie() 
+	getCookie(name) 
 	{
-			var nameEQ = this.name + "=";
+			var nameEQ = name + "=";
 			var ca = document.cookie.split(';');
 			for(var i=0;i < ca.length;i++) 
 			{
@@ -33,8 +35,10 @@ export default class CookieController
 			return null;
 		}
 	
-	eraseCookie()  
+	eraseCookie(name)  
 	{
-		document.cookie = this.name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	}
 }
+
+export { CookieController }
