@@ -1,5 +1,130 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block imports %}
+
+    <link rel = "stylesheet" href = "{% static 'css/style.css' %}">
+    <link rel = "stylesheet" href = "{% static 'css/bootstrap.min.css' %}">
+    <script src = "https://www.google.com/recaptcha/api.js" async defer></script>
+
+{% endblock %}
 
 {% block content %}
+    <body>
+        <div class="content">
     
+            <div class="container">
+
+                {% comment %} --------------- Main Form --------------- {% endcomment %}
+                
+                <div class="row align-items-stretch no-gutters contact-wrap">
+                    <div class="col-md-8">
+                        <div class="form h-100">
+                            <h3>Send us a message</h3>
+                            
+                            <form class="mb-5" action = "{% url 'landings' %}" method="POST" id="contactForm" name="contactForm">
+                              
+                                {% csrf_token %}
+                                
+                                {% comment %} --------------- Personal Data --------------- {% endcomment %}
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-5">
+                                        <label for="" class="col-form-label">Nume *</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nume" required>
+                                    </div>
+
+                                    <div class="col-md-6 form-group mb-5">
+                                        <label for="" class="col-form-label">Prenume *</label>
+                                        <input type="text" class="form-control" name="prenume" id="name" placeholder="Prenume" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6 form-group mb-5">
+                                        <label for="" class="col-form-label">Email *</label>
+                                        <input type="text" class="form-control" name="email" id="email"  placeholder="Adresa de mail" required>
+                                    </div>
+                                </div>
+                                
+                                {% comment %} --------------- Field Telefon --------------- {% endcomment %}
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-5">
+                                        <label for="" class="col-form-label">Telefon</label>
+                                        <input type="text" class="form-control" name="phone" id="phone"  placeholder="Telefon">
+                                    </div>
+                                </div>
+                                
+                                {% comment %} -------------- Field Mesaj --------------- {% endcomment %}
+                                <div class="row">
+                                    <div class="col-md-12 form-group mb-5">
+                                    <label for="message" class="col-form-label">Mesaj *</label>
+                                    <textarea class="form-control" name="message" id="message" cols="30" rows="4"  placeholder="Scrie-ne un mesaj" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="g-recaptcha" data-sitekey="6LfHqRspAAAAAC5e66C6JwRV4PZQDDe8V6HrSMN-"></div>
+                                <br/>
+                                
+                                {% comment %} --------------- Submit Button --------------- {% endcomment %}
+                                <div class="row">
+                                    <div class="text-center w-100 col-md-12 form-group">
+                                        <input type="submit" value="Trimite" id = "submit_button" class="btn btn-primary rounded-0 py-2 px-4">
+                                        <span class="submitting"></span>
+                                    </div>
+                                </div>
+                                
+                                {% if ok_response %}
+                                    <div class = "fade-in-text">
+                                        <p class = "w-100 text-center ok">
+                                            {{ ok_response }}
+                                        </p>
+                                    </div> 
+                                    <script type = "module" src = "{% static 'js/addSubmittedCookie.js' %}"></script>
+                                {% endif %}
+
+                                {% if error %}
+                                    <div class = "fade-in-text">
+                                        <p class = "w-100 text-center not-ok">
+                                            {{ error }}
+                                        </p>
+                                    </div>
+                                {% endif %}
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                    {% comment %} --------------- Sidebar --------------- {% endcomment %}
+                    
+                    <div class="col-md-4">
+                        <div class="contact-info h-100">
+
+                            <h3>Contacteaza-ne</h3>
+                            
+                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, magnam!</p>
+                            
+                            <ul class="list-unstyled">
+                                <li class="d-flex">
+                                    <span class="wrap-icon icon-room mr-3"></span>
+                                    <span class="text">Adresa CSE</span>
+                                </li>
+                            
+                                <li class="d-flex">
+                                    <span class="wrap-icon icon-phone mr-3"></span>
+                                    <span class="text">Numar de telefon CSE</span>
+                                </li>
+                            
+                                <li class="d-flex">
+                                    <span class="wrap-icon icon-envelope mr-3"></span>
+                                    <span class="text">Email CSE</span>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </body>
 {% endblock %}

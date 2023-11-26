@@ -6,10 +6,74 @@
         <title> Formular Feedback Profesori CNVA </title>
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+        
+        {% block imports %}
 
+        {% endblock %}
+    
     </head>
 
     {% block content %}
     {% endblock %}
 
-    </html>
+    <script type = "module" src = "{% static 'js/main.js' %}"></script>
+
+    <style>
+        .fade-in-text
+        {
+            animation: fadeIn 2s;
+            -webkit-animation: fadeIn 2s;
+            -moz-animation: fadeIn 2s;
+            -o-animation: fadeIn 2s;
+            -ms-anitmaion: fadeIn 2s;
+            
+            {% comment %} color: #F88379; {% endcomment %}
+        }
+        @keyframes fadeIn
+        {
+        0% { opacity: 0; }
+    
+        100% { opacity: 1; }
+        }
+        @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+        }
+    
+        @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+        }
+    
+        @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+        }
+    
+        @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+        }
+        
+    </style>
+</html>
